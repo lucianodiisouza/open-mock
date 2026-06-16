@@ -5,6 +5,7 @@ import { ChatHeader, ChatInputBar } from "@/components/chrome/ChatChrome";
 import {
   getChatBackground,
   getBubbleRadius,
+  getHeaderStyle,
   getSentBubbleStyle,
   getReceivedBubbleStyle,
 } from "@/lib/preview-styles";
@@ -20,7 +21,9 @@ export function BubbleChatPreview({ state, theme, platformSlug }: BubbleChatPrev
   const { messages, participants, settings, mode } = state;
   const dark = settings.darkMode;
   const other = participants.find((p) => p.id !== "user") ?? participants[1];
-  const bg = getChatBackground(platformSlug, dark, settings.wallpaper, dark ? theme.backgroundDark : theme.background);
+  const shellBg = dark ? theme.backgroundDark : theme.background;
+  const messagesBg = getChatBackground(platformSlug, dark, settings.wallpaper, shellBg);
+  const headerStyle = getHeaderStyle(platformSlug, theme, dark);
 
   return (
     <div
@@ -28,7 +31,7 @@ export function BubbleChatPreview({ state, theme, platformSlug }: BubbleChatPrev
       style={{
         width: 390,
         height: 700,
-        background: bg,
+        background: shellBg,
         fontFamily: theme.fontFamily,
       }}
     >
@@ -37,6 +40,7 @@ export function BubbleChatPreview({ state, theme, platformSlug }: BubbleChatPrev
         battery={settings.statusBar.battery}
         signal={settings.statusBar.signal}
         dark={dark || platformSlug === "discord"}
+        background={headerStyle.background}
       />
 
       <ChatHeader
@@ -49,7 +53,10 @@ export function BubbleChatPreview({ state, theme, platformSlug }: BubbleChatPrev
         online={other?.online}
       />
 
-      <div className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-2">
+      <div
+        className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-2"
+        style={{ background: messagesBg }}
+      >
         {messages.map((msg) => {
           const isSent = msg.senderId === "user";
           const sender = participants.find((p) => p.id === msg.senderId);

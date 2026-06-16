@@ -3,12 +3,13 @@ interface StatusBarProps {
   battery: number;
   signal: number;
   dark?: boolean;
+  background?: string;
 }
 
 /** iOS status bar safe-area height (notch / Dynamic Island clearance). */
 const STATUS_BAR_HEIGHT = 47;
 
-export function StatusBar({ time, battery, signal, dark = false }: StatusBarProps) {
+export function StatusBar({ time, battery, signal, dark = false, background }: StatusBarProps) {
   const textColor = dark ? "#ffffff" : "#000000";
 
   return (
@@ -16,7 +17,7 @@ export function StatusBar({ time, battery, signal, dark = false }: StatusBarProp
       className="flex shrink-0 items-end justify-between px-7 pb-1.5"
       style={{
         color: textColor,
-        background: "transparent",
+        background: background ?? "transparent",
         height: STATUS_BAR_HEIGHT,
         paddingTop: 14,
       }}
