@@ -294,6 +294,17 @@ export const PLATFORM_THEMES: Record<string, PlatformTheme> = {
     accent: "#1877f2",
     borderRadius: "18px",
   }),
+  youtube: base("YouTube", {
+    primary: "#ff0000",
+    bubbleSent: "#ff0000",
+    bubbleReceived: "#f1f1f1",
+    headerBg: "#ffffff",
+    headerText: "#0f0f0f",
+    background: "#ffffff",
+    backgroundDark: "#0f0f0f",
+    accent: "#ff0000",
+    borderRadius: "8px",
+  }),
   pinterest: base("Pinterest", {
     primary: "#e60023",
     bubbleSent: "#e60023",
