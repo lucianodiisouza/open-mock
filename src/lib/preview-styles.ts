@@ -1,4 +1,11 @@
-const WHATSAPP_WALLPAPER = `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8b8a8' fill-opacity='0.18' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")`;
+const WHATSAPP_WALLPAPER_LIGHT = "/wallpapers/whatsapp/doodle-light.png";
+const WHATSAPP_WALLPAPER_DARK = "/wallpapers/whatsapp/doodle-dark.webp";
+
+function whatsappDefaultBackground(dark: boolean): string {
+  const color = dark ? "#0b141a" : "#e5ddd5";
+  const image = dark ? WHATSAPP_WALLPAPER_DARK : WHATSAPP_WALLPAPER_LIGHT;
+  return `${color} url("${image}") center/cover`;
+}
 
 export function getChatBackground(
   platformSlug: string,
@@ -9,7 +16,7 @@ export function getChatBackground(
   if (wallpaper) return `url(${wallpaper}) center/cover`;
 
   if (platformSlug === "whatsapp") {
-    return dark ? "#0b141a" : `#e5ddd5 ${WHATSAPP_WALLPAPER}`;
+    return whatsappDefaultBackground(dark);
   }
 
   return fallback ?? "#ffffff";
