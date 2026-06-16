@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import {
   PLATFORMS_BY_CATEGORY,
@@ -12,6 +12,28 @@ import type { PlatformCategory } from "@/lib/types";
 export function Header() {
   const [open, setOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<PlatformCategory | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openCategory = (cat: PlatformCategory) => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setActiveCategory(cat);
+  };
+
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setActiveCategory(null), 120);
+  };
+
+  const toggleCategory = (cat: PlatformCategory) => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setActiveCategory((current) => (current === cat ? null : cat));
+  };
 
   return (
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
@@ -25,23 +47,36 @@ export function Header() {
             <div
               key={cat}
               className="relative"
-              onMouseEnter={() => setActiveCategory(cat)}
-              onMouseLeave={() => setActiveCategory(null)}
+              onMouseEnter={() => openCategory(cat)}
+              onMouseLeave={scheduleClose}
             >
-              <button className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
+              <button
+                type="button"
+                className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                aria-expanded={activeCategory === cat}
+                aria-haspopup="true"
+                onClick={() => toggleCategory(cat)}
+              >
                 {CATEGORY_LABELS[cat]}
               </button>
               {activeCategory === cat && (
-                <div className="absolute left-0 top-full z-50 mt-1 w-56 rounded-lg border bg-white py-2 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
-                  {PLATFORMS_BY_CATEGORY[cat].map((p) => (
-                    <Link
-                      key={p.slug}
-                      href={`/generators/${p.slug}`}
-                      className="block px-4 py-1.5 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800"
-                    >
-                      {p.name}
-                    </Link>
-                  ))}
+                <div
+                  className="absolute left-0 top-full z-50 w-56 pt-1"
+                  onMouseEnter={() => openCategory(cat)}
+                  onMouseLeave={scheduleClose}
+                >
+                  <div className="rounded-lg border bg-white py-2 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+                    {PLATFORMS_BY_CATEGORY[cat].map((p) => (
+                      <Link
+                        key={p.slug}
+                        href={`/generators/${p.slug}`}
+                        className="block px-4 py-1.5 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                        onClick={() => setActiveCategory(null)}
+                      >
+                        {p.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -54,7 +89,7 @@ export function Header() {
           </Link>
         </nav>
 
-        <button className="md:hidden" onClick={() => setOpen(!open)}>
+        <button type="button" className="md:hidden" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
