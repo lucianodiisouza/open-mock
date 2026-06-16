@@ -44,10 +44,14 @@ export function IMessagePreview({ state, theme, platformSlug }: IMessagePreviewP
         </button>
         <div className="flex flex-1 flex-col items-center">
           <div
-            className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold text-white"
+            className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full text-xs font-semibold text-white"
             style={{ background: theme.accent }}
           >
-            {other?.name?.[0] ?? "?"}
+            {other?.avatar ? (
+              <img src={other.avatar} alt="" className="h-full w-full object-cover" />
+            ) : (
+              other?.name?.[0] ?? "?"
+            )}
           </div>
           <div className="mt-0.5 text-[11px] font-medium">{other?.name}</div>
         </div>
