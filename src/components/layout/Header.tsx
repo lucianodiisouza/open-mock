@@ -1,15 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
-import {
-  PLATFORMS_BY_CATEGORY,
-  CATEGORY_LABELS,
-} from "@/lib/platform-registry";
+import { Link } from "@/i18n/navigation";
+import { PLATFORMS_BY_CATEGORY } from "@/lib/platform-registry";
 import type { PlatformCategory } from "@/lib/types";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
+  const tCategories = useTranslations("categories");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<PlatformCategory | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -39,7 +40,7 @@ export function Header() {
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <Link href="/" className="text-xl font-bold text-emerald-600">
-          Open Mock
+          {tCommon("brand")}
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -57,7 +58,7 @@ export function Header() {
                 aria-haspopup="true"
                 onClick={() => toggleCategory(cat)}
               >
-                {CATEGORY_LABELS[cat]}
+                {tCategories(cat)}
               </button>
               {activeCategory === cat && (
                 <div
@@ -82,16 +83,20 @@ export function Header() {
             </div>
           ))}
           <Link href="/docs" className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400">
-            Docs
+            {tCommon("docs")}
           </Link>
           <Link href="/faq" className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400">
-            FAQ
+            {tCommon("faq")}
           </Link>
+          <LanguageSwitcher />
         </nav>
 
-        <button type="button" className="md:hidden" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSwitcher />
+          <button type="button" onClick={() => setOpen(!open)}>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -99,7 +104,7 @@ export function Header() {
           {(Object.keys(PLATFORMS_BY_CATEGORY) as PlatformCategory[]).map((cat) => (
             <div key={cat} className="mb-4">
               <h3 className="mb-2 text-xs font-semibold uppercase text-zinc-500">
-                {CATEGORY_LABELS[cat]}
+                {tCategories(cat)}
               </h3>
               <div className="grid grid-cols-2 gap-1">
                 {PLATFORMS_BY_CATEGORY[cat].map((p) => (
