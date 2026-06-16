@@ -1,6 +1,7 @@
 "use client";
 
 import { Plus, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { EMPTY_STORY_SLIDES, useGeneratorStore } from "@/stores/generator-store";
 import { Button } from "@/components/ui/button";
 import { FormField, FormRow, FormSection, ItemCard } from "@/components/ui/form";
@@ -10,6 +11,7 @@ import type { StoryFontSize, StoryTextAlign, StoryTextPosition } from "@/lib/typ
 import { normalizeStorySlide } from "@/lib/utils/story-slide";
 
 export function StoryEditor() {
+  const t = useTranslations("generator.slides");
   const slides = useGeneratorStore((s) =>
     s.data?.category === "story" ? s.data.state.slides : EMPTY_STORY_SLIDES,
   ).map(normalizeStorySlide);
@@ -19,18 +21,18 @@ export function StoryEditor() {
 
   return (
     <FormSection
-      title="Slides"
-      description="Each slide appears as a story frame in the preview."
+      title={t("title")}
+      description={t("description")}
       action={
         <Button variant="ghost" size="sm" onClick={addSlide}>
           <Plus size={14} />
-          Add slide
+          {t("addSlide")}
         </Button>
       }
     >
       {slides.length === 0 ? (
         <p className="rounded-lg border border-dashed border-zinc-200 px-4 py-8 text-center text-sm text-zinc-500 dark:border-zinc-700">
-          No slides yet. Add one to get started.
+          {t("empty")}
         </p>
       ) : (
         <div className="space-y-3">
@@ -38,37 +40,37 @@ export function StoryEditor() {
             <ItemCard key={i} className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium uppercase tracking-wide text-zinc-500">
-                  Slide {i + 1}
+                  {t("slideNumber", { number: i + 1 })}
                 </span>
                 <Button
                   variant="danger"
                   size="icon"
                   onClick={() => removeSlide(i)}
-                  aria-label={`Remove slide ${i + 1}`}
+                  aria-label={t("removeSlide", { number: i + 1 })}
                 >
                   <Trash2 size={14} />
                 </Button>
               </div>
 
               <ImageUploadField
-                label="Background image"
-                description="Optional image behind the slide text."
+                label={t("backgroundImage")}
+                description={t("backgroundImageDescription")}
                 value={slide.backgroundImage}
                 onChange={(dataUrl) => updateSlide(i, { backgroundImage: dataUrl })}
                 onClear={() => updateSlide(i, { backgroundImage: "" })}
               />
 
-              <FormField label="Text">
+              <FormField label={t("text")}>
                 <Textarea
                   value={slide.text}
                   onChange={(e) => updateSlide(i, { text: e.target.value })}
                   rows={2}
-                  placeholder="Slide text or caption..."
+                  placeholder={t("textPlaceholder")}
                 />
               </FormField>
 
               <FormRow>
-                <FormField label="Text position">
+                <FormField label={t("textPosition")}>
                   <Select
                     value={slide.textPosition}
                     onChange={(e) =>
@@ -77,13 +79,13 @@ export function StoryEditor() {
                       })
                     }
                   >
-                    <option value="top">Top</option>
-                    <option value="center">Center</option>
-                    <option value="bottom">Bottom</option>
+                    <option value="top">{t("positionTop")}</option>
+                    <option value="center">{t("positionCenter")}</option>
+                    <option value="bottom">{t("positionBottom")}</option>
                   </Select>
                 </FormField>
 
-                <FormField label="Text alignment">
+                <FormField label={t("textAlignment")}>
                   <Select
                     value={slide.textAlign}
                     onChange={(e) =>
@@ -92,14 +94,14 @@ export function StoryEditor() {
                       })
                     }
                   >
-                    <option value="left">Left</option>
-                    <option value="center">Center</option>
-                    <option value="right">Right</option>
+                    <option value="left">{t("alignLeft")}</option>
+                    <option value="center">{t("alignCenter")}</option>
+                    <option value="right">{t("alignRight")}</option>
                   </Select>
                 </FormField>
               </FormRow>
 
-              <FormField label="Text size">
+              <FormField label={t("textSize")}>
                 <Select
                   value={slide.fontSize}
                   onChange={(e) =>
@@ -108,9 +110,9 @@ export function StoryEditor() {
                     })
                   }
                 >
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
+                  <option value="small">{t("sizeSmall")}</option>
+                  <option value="medium">{t("sizeMedium")}</option>
+                  <option value="large">{t("sizeLarge")}</option>
                 </Select>
               </FormField>
             </ItemCard>
