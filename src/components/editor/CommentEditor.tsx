@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { EMPTY_COMMENTS, useGeneratorStore } from "@/stores/generator-store";
 import { Button } from "@/components/ui/button";
 import { FormField, FormSection, ItemCard } from "@/components/ui/form";
+import { AvatarUploadField } from "@/components/ui/avatar-upload";
 import { Input, Textarea } from "@/components/ui/input";
 
 export function CommentEditor() {
@@ -35,6 +36,14 @@ export function CommentEditor() {
         <div className="space-y-3">
           {comments.map((c) => (
             <ItemCard key={c.id} className="space-y-3">
+              <AvatarUploadField
+                label={t("avatar")}
+                value={c.avatar}
+                fallbackInitial={c.author}
+                onChange={(dataUrl) => updateComment(c.id, { avatar: dataUrl })}
+                onClear={() => updateComment(c.id, { avatar: "" })}
+              />
+
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1">
                   <FormField label={t("author")}>
