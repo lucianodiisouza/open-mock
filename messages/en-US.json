@@ -1,0 +1,253 @@
+{
+  "metadata": {
+    "title": "Open Mock | Chat, AI, Social, and Email Mockup Generator",
+    "description": "Open-source mockup generator for fake chat screenshots, social posts, AI chats, stories, and emails. Free, no signup required."
+  },
+  "common": {
+    "brand": "Open Mock",
+    "docs": "Docs",
+    "faq": "FAQ",
+    "github": "GitHub",
+    "close": "Close",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "Open-source mockup generator for educational and demo purposes. Not affiliated with any platform shown.",
+    "license": "MIT License · © {year} Open Mock"
+  },
+  "categories": {
+    "chat": "Chat Messages",
+    "ai": "AI Chats",
+    "post": "Social Posts",
+    "comment": "Comments",
+    "story": "Stories",
+    "email": "Email"
+  },
+  "home": {
+    "heroTitle": "Chat, AI, Social & Email",
+    "heroHighlight": "Mockup Generator",
+    "heroDescription": "Create realistic fake screenshots for 49 platforms. Free, open source, runs entirely in your browser. No signup, no watermarks.",
+    "tryWhatsApp": "Try WhatsApp Generator",
+    "allGenerators": "All Generators",
+    "howItWorks": "How it works",
+    "step1Title": "Choose platform",
+    "step1Description": "Pick from 49 chat, AI, social, story, and email generators.",
+    "step2Title": "Customize",
+    "step2Description": "Edit messages, names, timestamps, dark mode, and device frames.",
+    "step3Title": "Export",
+    "step3Description": "Download high-res PNG or animated video. No watermarks."
+  },
+  "docs": {
+    "metadataTitle": "Documentation | Open Mock",
+    "metadataDescription": "Install, run, and self-host Open Mock locally.",
+    "title": "Documentation",
+    "quickStart": "Quick Start",
+    "openBrowserPrefix": "Open",
+    "openBrowserSuffix": "in your browser.",
+    "selfHosting": "Self-Hosting",
+    "vercel": "Vercel",
+    "vercelDescription": "Connect your GitHub repo to Vercel. Next.js is auto-detected. No environment variables required.",
+    "docker": "Docker",
+    "dockerDescriptionPrefix": "For production Docker, set",
+    "dockerDescriptionSuffix": "in next.config.ts.",
+    "exportGuide": "Export Guide",
+    "exportStep1": "Click Export on any generator page",
+    "exportStep2": "Choose resolution: 1x, 2x, or 3x for high-DPI screens",
+    "exportStep3": "Enable transparent background for compositing",
+    "exportStep4": "Video export available for chat and AI generators",
+    "supportedPlatforms": "Supported Platforms ({count})",
+    "contributing": "Contributing",
+    "contributingDescriptionPrefix": "See",
+    "contributingDescriptionSuffix": "in the repository for how to add a new platform generator."
+  },
+  "faq": {
+    "metadataTitle": "FAQ | Open Mock",
+    "metadataDescription": "Frequently asked questions about the Open Mock mockup generator.",
+    "title": "Frequently Asked Questions",
+    "introPrefix": "Quick answers about Open Mock. For setup and self-hosting, see",
+    "introSuffix": ".",
+    "items": {
+      "what": {
+        "q": "What is Open Mock?",
+        "a": "Open Mock is a free, open-source mockup generator for creating realistic fake chat screenshots, social posts, AI conversations, stories, and emails across 49 platforms."
+      },
+      "free": {
+        "q": "Is it free to use?",
+        "a": "Yes. All features are free with no signup, no watermarks, and no limits. The source code is available under the MIT license."
+      },
+      "privacy": {
+        "q": "Is my data private?",
+        "a": "Yes. Everything runs client-side in your browser. No messages or content are sent to any server. State is optionally saved to localStorage on your device."
+      },
+      "platforms": {
+        "q": "What platforms are supported?",
+        "a": "All {count} generators including WhatsApp, iMessage, Discord, Slack, ChatGPT, Claude, Instagram, X, Gmail, and more. See the homepage for the full list."
+      },
+      "export": {
+        "q": "How do I export mockups?",
+        "a": "Click the Export button on any generator page. Choose PNG (1x–3x resolution) or video (chat/AI generators). Transparent background is supported."
+      },
+      "uses": {
+        "q": "What are legitimate uses?",
+        "a": "UI/UX design, app demos, presentations, film/TV production, educational content, and testing layouts. Do not use for deception, fraud, or harassment."
+      },
+      "download": {
+        "q": "Do I need to download software?",
+        "a": "No. Open Mock runs in your browser. You can also self-host by cloning the GitHub repository."
+      },
+      "contribute": {
+        "q": "How do I contribute?",
+        "a": "Fork the repository, add a new platform following CONTRIBUTING.md, and submit a pull request."
+      },
+      "affiliation": {
+        "q": "Is Open Mock affiliated with WhatsApp, Apple, etc.?",
+        "a": "No. Open Mock is an independent open-source project. Platform names and UIs are used for mockup purposes only."
+      },
+      "selfHost": {
+        "q": "Can I self-host?",
+        "a": "Yes. Deploy to Vercel, run with npm, or use Docker. See the Docs page for instructions."
+      }
+    }
+  },
+  "platform": {
+    "seo": {
+      "chatTitle": "{name} Chat Mockup Generator | Open Mock",
+      "chatDescription": "Create realistic fake {name} chat screenshots. Direct and group chats with avatars, timestamps, and export to PNG.",
+      "aiTitle": "Fake {name} Chat Mockup Generator | Open Mock",
+      "aiDescription": "Create realistic fake {name} AI chat screenshots for demos and presentations.",
+      "postTitle": "Fake {name} Post Mockup Generator | Open Mock",
+      "postDescription": "Create realistic fake {name} post screenshots with likes, comments, and media.",
+      "commentTitle": "Fake {name} Comment Mockup Generator | Open Mock",
+      "commentDescription": "Create realistic fake {name} comment thread screenshots.",
+      "storyTitle": "Fake {name} Story Mockup Generator | Open Mock",
+      "storyDescription": "Create realistic fake {name} story screenshots.",
+      "emailTitle": "Fake {name} Email Mockup Generator | Open Mock",
+      "emailDescription": "Create realistic fake {name} email screenshots."
+    }
+  },
+  "generator": {
+    "livePreview": "Live preview",
+    "updatesAsYouEdit": "Updates as you edit",
+    "export": {
+      "button": "Export",
+      "title": "Export mockup",
+      "description": "Choose format and quality settings.",
+      "resolution": "Resolution",
+      "resolutionDescription": "Higher values produce sharper images.",
+      "resolution1x": "1x — Standard",
+      "resolution2x": "2x — High",
+      "resolution3x": "3x — Ultra",
+      "transparentBackground": "Transparent background",
+      "transparentBackgroundDescription": "Remove the preview background from the export.",
+      "exporting": "Exporting...",
+      "exportPng": "Export PNG",
+      "video": "Video"
+    },
+    "messages": {
+      "title": "Messages",
+      "description": "Build the conversation. Drag to reorder.",
+      "addMessage": "Add message",
+      "empty": "No messages yet. Add one to get started.",
+      "dragToReorder": "Drag to reorder",
+      "sender": "Sender",
+      "message": "Message",
+      "messagePlaceholder": "Type a message...",
+      "timestamp": "Timestamp",
+      "status": "Status",
+      "statusSent": "Sent",
+      "statusDelivered": "Delivered",
+      "statusRead": "Read",
+      "removeMessage": "Remove message"
+    },
+    "comments": {
+      "title": "Comments",
+      "description": "Add and edit comment threads for your post.",
+      "addComment": "Add comment",
+      "empty": "No comments yet. Add one to get started.",
+      "author": "Author",
+      "authorPlaceholder": "Username",
+      "comment": "Comment",
+      "commentPlaceholder": "Write a comment...",
+      "removeComment": "Remove comment"
+    },
+    "slides": {
+      "title": "Slides",
+      "description": "Each slide appears as a story frame in the preview.",
+      "addSlide": "Add slide",
+      "empty": "No slides yet. Add one to get started.",
+      "slideNumber": "Slide {number}",
+      "removeSlide": "Remove slide {number}",
+      "backgroundImage": "Background image",
+      "backgroundImageDescription": "Optional image behind the slide text.",
+      "text": "Text",
+      "textPlaceholder": "Slide text or caption...",
+      "textPosition": "Text position",
+      "textAlignment": "Text alignment",
+      "textSize": "Text size",
+      "positionTop": "Top",
+      "positionCenter": "Center",
+      "positionBottom": "Bottom",
+      "alignLeft": "Left",
+      "alignCenter": "Center",
+      "alignRight": "Right",
+      "sizeSmall": "Small",
+      "sizeMedium": "Medium",
+      "sizeLarge": "Large"
+    },
+    "settings": {
+      "appearanceTitle": "Appearance & settings",
+      "appearanceDescription": "Customize how the chat mockup looks.",
+      "groupChat": "Group chat",
+      "groupChatDescription": "Show a group conversation header instead of a DM.",
+      "contactName": "Contact name",
+      "contactNamePlaceholder": "Contact or group name",
+      "displayOptions": "Display options",
+      "darkMode": "Dark mode",
+      "darkModeDescription": "Use the platform's dark theme in the preview.",
+      "view3d": "3D view",
+      "view3dDescription": "Tilt the device frame for a perspective effect.",
+      "statusBarTime": "Status bar time",
+      "deviceFrame": "Device frame",
+      "deviceNone": "None",
+      "deviceIphone": "iPhone",
+      "deviceAndroid": "Android",
+      "chatWallpaper": "Chat wallpaper",
+      "chatWallpaperDescription": "Upload a custom background image for the chat screen.",
+      "postTitle": "Post content",
+      "postDescription": "Edit the author and body of your social post.",
+      "authorName": "Author name",
+      "authorNamePlaceholder": "Jane Doe",
+      "handle": "Handle",
+      "handlePlaceholder": "@janedoe",
+      "content": "Content",
+      "contentPlaceholder": "What's on your mind?",
+      "postImage": "Post image",
+      "postImageDescription": "Attach an image to your social post.",
+      "postContextTitle": "Post context",
+      "postContextDescription": "Set the original post shown above the comments.",
+      "postPreview": "Post preview",
+      "postPreviewDescription": "Short text shown as the post being commented on.",
+      "postPreviewPlaceholder": "Original post text...",
+      "storyDetailsTitle": "Story details",
+      "storyDetailsDescription": "Set the author shown on your story frames.",
+      "storyAuthor": "Author",
+      "storyAuthorPlaceholder": "Your name",
+      "emailTitle": "Email content",
+      "emailDescription": "Compose the email shown in the preview.",
+      "fromName": "From name",
+      "fromNamePlaceholder": "Sender name",
+      "subject": "Subject",
+      "subjectPlaceholder": "Email subject line",
+      "body": "Body",
+      "bodyPlaceholder": "Write your email body..."
+    },
+    "upload": {
+      "clickToUpload": "Click to upload an image",
+      "formats": "PNG, JPG, or WebP up to 5 MB",
+      "replaceImage": "Replace image",
+      "removeImage": "Remove image",
+      "notImage": "Please choose an image file.",
+      "tooLarge": "Image must be 5 MB or smaller."
+    }
+  }
+}

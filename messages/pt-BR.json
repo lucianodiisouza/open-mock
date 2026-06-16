@@ -1,0 +1,253 @@
+{
+  "metadata": {
+    "title": "Open Mock | Gerador de Mockups de Chat, IA, Redes Sociais e E-mail",
+    "description": "Gerador de mockups open source para capturas de chat falsas, posts sociais, chats de IA, stories e e-mails. Grátis, sem cadastro."
+  },
+  "common": {
+    "brand": "Open Mock",
+    "docs": "Documentação",
+    "faq": "FAQ",
+    "github": "GitHub",
+    "close": "Fechar",
+    "language": "Idioma"
+  },
+  "footer": {
+    "tagline": "Gerador de mockups open source para fins educacionais e demonstrativos. Não afiliado a nenhuma plataforma exibida.",
+    "license": "Licença MIT · © {year} Open Mock"
+  },
+  "categories": {
+    "chat": "Mensagens de Chat",
+    "ai": "Chats de IA",
+    "post": "Posts Sociais",
+    "comment": "Comentários",
+    "story": "Stories",
+    "email": "E-mail"
+  },
+  "home": {
+    "heroTitle": "Chat, IA, Redes Sociais e E-mail",
+    "heroHighlight": "Gerador de Mockups",
+    "heroDescription": "Crie capturas de tela falsas realistas para 49 plataformas. Grátis, open source, roda inteiramente no seu navegador. Sem cadastro, sem marcas d'água.",
+    "tryWhatsApp": "Experimentar Gerador WhatsApp",
+    "allGenerators": "Todos os Geradores",
+    "howItWorks": "Como funciona",
+    "step1Title": "Escolha a plataforma",
+    "step1Description": "Escolha entre 49 geradores de chat, IA, redes sociais, stories e e-mail.",
+    "step2Title": "Personalize",
+    "step2Description": "Edite mensagens, nomes, horários, modo escuro e molduras de dispositivo.",
+    "step3Title": "Exporte",
+    "step3Description": "Baixe PNG em alta resolução ou vídeo animado. Sem marcas d'água."
+  },
+  "docs": {
+    "metadataTitle": "Documentação | Open Mock",
+    "metadataDescription": "Instale, execute e hospede o Open Mock localmente.",
+    "title": "Documentação",
+    "quickStart": "Início Rápido",
+    "openBrowserPrefix": "Abra",
+    "openBrowserSuffix": "no seu navegador.",
+    "selfHosting": "Auto-hospedagem",
+    "vercel": "Vercel",
+    "vercelDescription": "Conecte seu repositório GitHub à Vercel. Next.js é detectado automaticamente. Nenhuma variável de ambiente necessária.",
+    "docker": "Docker",
+    "dockerDescriptionPrefix": "Para Docker em produção, defina",
+    "dockerDescriptionSuffix": "em next.config.ts.",
+    "exportGuide": "Guia de Exportação",
+    "exportStep1": "Clique em Exportar em qualquer página de gerador",
+    "exportStep2": "Escolha a resolução: 1x, 2x ou 3x para telas de alta densidade",
+    "exportStep3": "Ative fundo transparente para composição",
+    "exportStep4": "Exportação de vídeo disponível para geradores de chat e IA",
+    "supportedPlatforms": "Plataformas Suportadas ({count})",
+    "contributing": "Contribuindo",
+    "contributingDescriptionPrefix": "Veja",
+    "contributingDescriptionSuffix": "no repositório para saber como adicionar um novo gerador de plataforma."
+  },
+  "faq": {
+    "metadataTitle": "FAQ | Open Mock",
+    "metadataDescription": "Perguntas frequentes sobre o gerador de mockups Open Mock.",
+    "title": "Perguntas Frequentes",
+    "introPrefix": "Respostas rápidas sobre o Open Mock. Para configuração e auto-hospedagem, veja",
+    "introSuffix": ".",
+    "items": {
+      "what": {
+        "q": "O que é o Open Mock?",
+        "a": "Open Mock é um gerador de mockups gratuito e open source para criar capturas de tela falsas realistas de chats, posts sociais, conversas de IA, stories e e-mails em 49 plataformas."
+      },
+      "free": {
+        "q": "É gratuito?",
+        "a": "Sim. Todos os recursos são gratuitos, sem cadastro, sem marcas d'água e sem limites. O código-fonte está disponível sob a licença MIT."
+      },
+      "privacy": {
+        "q": "Meus dados são privados?",
+        "a": "Sim. Tudo roda no lado do cliente no seu navegador. Nenhuma mensagem ou conteúdo é enviado a nenhum servidor. O estado é opcionalmente salvo no localStorage do seu dispositivo."
+      },
+      "platforms": {
+        "q": "Quais plataformas são suportadas?",
+        "a": "Todos os {count} geradores, incluindo WhatsApp, iMessage, Discord, Slack, ChatGPT, Claude, Instagram, X, Gmail e mais. Veja a página inicial para a lista completa."
+      },
+      "export": {
+        "q": "Como exporto mockups?",
+        "a": "Clique no botão Exportar em qualquer página de gerador. Escolha PNG (resolução 1x–3x) ou vídeo (geradores de chat/IA). Fundo transparente é suportado."
+      },
+      "uses": {
+        "q": "Quais são os usos legítimos?",
+        "a": "Design UI/UX, demos de apps, apresentações, produção audiovisual, conteúdo educacional e testes de layout. Não use para engano, fraude ou assédio."
+      },
+      "download": {
+        "q": "Preciso baixar software?",
+        "a": "Não. O Open Mock roda no seu navegador. Você também pode auto-hospedar clonando o repositório GitHub."
+      },
+      "contribute": {
+        "q": "Como contribuo?",
+        "a": "Faça um fork do repositório, adicione uma nova plataforma seguindo o CONTRIBUTING.md e envie um pull request."
+      },
+      "affiliation": {
+        "q": "O Open Mock é afiliado ao WhatsApp, Apple, etc.?",
+        "a": "Não. Open Mock é um projeto open source independente. Nomes e interfaces de plataformas são usados apenas para fins de mockup."
+      },
+      "selfHost": {
+        "q": "Posso auto-hospedar?",
+        "a": "Sim. Implante na Vercel, execute com npm ou use Docker. Veja a página de Documentação para instruções."
+      }
+    }
+  },
+  "platform": {
+    "seo": {
+      "chatTitle": "Gerador de Mockup de Chat {name} | Open Mock",
+      "chatDescription": "Crie capturas de tela falsas realistas de chat do {name}. Chats diretos e em grupo com avatares, horários e exportação para PNG.",
+      "aiTitle": "Gerador de Mockup de Chat {name} | Open Mock",
+      "aiDescription": "Crie capturas de tela falsas realistas de chat de IA do {name} para demos e apresentações.",
+      "postTitle": "Gerador de Mockup de Post {name} | Open Mock",
+      "postDescription": "Crie capturas de tela falsas realistas de posts do {name} com curtidas, comentários e mídia.",
+      "commentTitle": "Gerador de Mockup de Comentários {name} | Open Mock",
+      "commentDescription": "Crie capturas de tela falsas realistas de threads de comentários do {name}.",
+      "storyTitle": "Gerador de Mockup de Story {name} | Open Mock",
+      "storyDescription": "Crie capturas de tela falsas realistas de stories do {name}.",
+      "emailTitle": "Gerador de Mockup de E-mail {name} | Open Mock",
+      "emailDescription": "Crie capturas de tela falsas realistas de e-mails do {name}."
+    }
+  },
+  "generator": {
+    "livePreview": "Pré-visualização ao vivo",
+    "updatesAsYouEdit": "Atualiza conforme você edita",
+    "export": {
+      "button": "Exportar",
+      "title": "Exportar mockup",
+      "description": "Escolha o formato e as configurações de qualidade.",
+      "resolution": "Resolução",
+      "resolutionDescription": "Valores maiores produzem imagens mais nítidas.",
+      "resolution1x": "1x — Padrão",
+      "resolution2x": "2x — Alta",
+      "resolution3x": "3x — Ultra",
+      "transparentBackground": "Fundo transparente",
+      "transparentBackgroundDescription": "Remove o fundo da pré-visualização da exportação.",
+      "exporting": "Exportando...",
+      "exportPng": "Exportar PNG",
+      "video": "Vídeo"
+    },
+    "messages": {
+      "title": "Mensagens",
+      "description": "Monte a conversa. Arraste para reordenar.",
+      "addMessage": "Adicionar mensagem",
+      "empty": "Nenhuma mensagem ainda. Adicione uma para começar.",
+      "dragToReorder": "Arrastar para reordenar",
+      "sender": "Remetente",
+      "message": "Mensagem",
+      "messagePlaceholder": "Digite uma mensagem...",
+      "timestamp": "Horário",
+      "status": "Status",
+      "statusSent": "Enviada",
+      "statusDelivered": "Entregue",
+      "statusRead": "Lida",
+      "removeMessage": "Remover mensagem"
+    },
+    "comments": {
+      "title": "Comentários",
+      "description": "Adicione e edite threads de comentários para seu post.",
+      "addComment": "Adicionar comentário",
+      "empty": "Nenhum comentário ainda. Adicione um para começar.",
+      "author": "Autor",
+      "authorPlaceholder": "Nome de usuário",
+      "comment": "Comentário",
+      "commentPlaceholder": "Escreva um comentário...",
+      "removeComment": "Remover comentário"
+    },
+    "slides": {
+      "title": "Slides",
+      "description": "Cada slide aparece como um frame de story na pré-visualização.",
+      "addSlide": "Adicionar slide",
+      "empty": "Nenhum slide ainda. Adicione um para começar.",
+      "slideNumber": "Slide {number}",
+      "removeSlide": "Remover slide {number}",
+      "backgroundImage": "Imagem de fundo",
+      "backgroundImageDescription": "Imagem opcional atrás do texto do slide.",
+      "text": "Texto",
+      "textPlaceholder": "Texto ou legenda do slide...",
+      "textPosition": "Posição do texto",
+      "textAlignment": "Alinhamento do texto",
+      "textSize": "Tamanho do texto",
+      "positionTop": "Topo",
+      "positionCenter": "Centro",
+      "positionBottom": "Base",
+      "alignLeft": "Esquerda",
+      "alignCenter": "Centro",
+      "alignRight": "Direita",
+      "sizeSmall": "Pequeno",
+      "sizeMedium": "Médio",
+      "sizeLarge": "Grande"
+    },
+    "settings": {
+      "appearanceTitle": "Aparência e configurações",
+      "appearanceDescription": "Personalize a aparência do mockup de chat.",
+      "groupChat": "Chat em grupo",
+      "groupChatDescription": "Mostra o cabeçalho de conversa em grupo em vez de DM.",
+      "contactName": "Nome do contato",
+      "contactNamePlaceholder": "Nome do contato ou grupo",
+      "displayOptions": "Opções de exibição",
+      "darkMode": "Modo escuro",
+      "darkModeDescription": "Usa o tema escuro da plataforma na pré-visualização.",
+      "view3d": "Visualização 3D",
+      "view3dDescription": "Inclina a moldura do dispositivo para um efeito de perspectiva.",
+      "statusBarTime": "Horário da barra de status",
+      "deviceFrame": "Moldura do dispositivo",
+      "deviceNone": "Nenhuma",
+      "deviceIphone": "iPhone",
+      "deviceAndroid": "Android",
+      "chatWallpaper": "Papel de parede do chat",
+      "chatWallpaperDescription": "Envie uma imagem de fundo personalizada para a tela de chat.",
+      "postTitle": "Conteúdo do post",
+      "postDescription": "Edite o autor e o corpo do seu post social.",
+      "authorName": "Nome do autor",
+      "authorNamePlaceholder": "Jane Doe",
+      "handle": "Handle",
+      "handlePlaceholder": "@janedoe",
+      "content": "Conteúdo",
+      "contentPlaceholder": "No que você está pensando?",
+      "postImage": "Imagem do post",
+      "postImageDescription": "Anexe uma imagem ao seu post social.",
+      "postContextTitle": "Contexto do post",
+      "postContextDescription": "Defina o post original exibido acima dos comentários.",
+      "postPreview": "Prévia do post",
+      "postPreviewDescription": "Texto curto exibido como o post sendo comentado.",
+      "postPreviewPlaceholder": "Texto do post original...",
+      "storyDetailsTitle": "Detalhes da story",
+      "storyDetailsDescription": "Defina o autor exibido nos frames da story.",
+      "storyAuthor": "Autor",
+      "storyAuthorPlaceholder": "Seu nome",
+      "emailTitle": "Conteúdo do e-mail",
+      "emailDescription": "Componha o e-mail exibido na pré-visualização.",
+      "fromName": "Nome do remetente",
+      "fromNamePlaceholder": "Nome do remetente",
+      "subject": "Assunto",
+      "subjectPlaceholder": "Linha de assunto do e-mail",
+      "body": "Corpo",
+      "bodyPlaceholder": "Escreva o corpo do e-mail..."
+    },
+    "upload": {
+      "clickToUpload": "Clique para enviar uma imagem",
+      "formats": "PNG, JPG ou WebP até 5 MB",
+      "replaceImage": "Substituir imagem",
+      "removeImage": "Remover imagem",
+      "notImage": "Escolha um arquivo de imagem.",
+      "tooLarge": "A imagem deve ter 5 MB ou menos."
+    }
+  }
+}
