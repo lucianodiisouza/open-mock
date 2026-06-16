@@ -166,6 +166,7 @@
       "empty": "No comments yet. Add one to get started.",
       "author": "Author",
       "authorPlaceholder": "Username",
+      "avatar": "Avatar",
       "comment": "Comment",
       "commentPlaceholder": "Write a comment...",
       "removeComment": "Remove comment"
@@ -236,6 +237,8 @@
       "storyDetailsDescription": "Set the author shown on your story frames.",
       "storyAuthor": "Author",
       "storyAuthorPlaceholder": "Your name",
+      "storyAuthorAvatar": "Author avatar",
+      "storyAuthorAvatarDescription": "Upload a profile photo shown on story frames.",
       "emailTitle": "Email content",
       "emailDescription": "Compose the email shown in the preview.",
       "fromName": "From name",

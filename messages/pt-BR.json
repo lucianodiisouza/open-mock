@@ -236,6 +236,8 @@
       "storyDetailsDescription": "Defina o autor exibido nos frames da story.",
       "storyAuthor": "Autor",
       "storyAuthorPlaceholder": "Seu nome",
+      "storyAuthorAvatar": "Avatar do autor",
+      "storyAuthorAvatarDescription": "Envie uma foto de perfil exibida nos frames da story.",
       "emailTitle": "Conteúdo do e-mail",
       "emailDescription": "Componha o e-mail exibido na pré-visualização.",
       "fromName": "Nome do remetente",
