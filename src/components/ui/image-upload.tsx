@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ImagePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { readFileAsDataUrl, validateImageFile } from "@/lib/utils/image";
@@ -23,6 +24,7 @@ export function ImageUploadField({
   onClear,
   className,
 }: ImageUploadFieldProps) {
+  const t = useTranslations("generator.upload");
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,7 +33,7 @@ export function ImageUploadField({
 
     const validationError = validateImageFile(file);
     if (validationError) {
-      setError(validationError);
+      setError(t(validationError));
       return;
     }
 
@@ -62,7 +64,7 @@ export function ImageUploadField({
               onClear();
               if (inputRef.current) inputRef.current.value = "";
             }}
-            aria-label="Remove image"
+            aria-label={t("removeImage")}
           >
             <X size={14} />
           </Button>
@@ -74,8 +76,8 @@ export function ImageUploadField({
           className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-zinc-300 bg-white px-4 py-8 text-sm text-zinc-500 transition-colors hover:border-emerald-400 hover:bg-emerald-50/50 hover:text-emerald-700 dark:border-zinc-600 dark:bg-zinc-900 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/20 dark:hover:text-emerald-400"
         >
           <ImagePlus size={20} />
-          <span>Click to upload an image</span>
-          <span className="text-xs text-zinc-400">PNG, JPG, or WebP up to 5 MB</span>
+          <span>{t("clickToUpload")}</span>
+          <span className="text-xs text-zinc-400">{t("formats")}</span>
         </button>
       )}
 
@@ -86,7 +88,7 @@ export function ImageUploadField({
           size="sm"
           onClick={() => inputRef.current?.click()}
         >
-          Replace image
+          {t("replaceImage")}
         </Button>
       )}
 
