@@ -175,6 +175,17 @@ function PostSettings({ platform }: { platform: PlatformConfig }) {
 
   return (
     <FormSection title={t("postTitle")} description={t("postDescription")}>
+      <AvatarUploadField
+        label={t("authorAvatar")}
+        description={t("authorAvatarDescription")}
+        value={state.author.avatar}
+        fallbackInitial={state.author.name}
+        onChange={(dataUrl) =>
+          updatePost({ author: { ...state.author, avatar: dataUrl } })
+        }
+        onClear={() => updatePost({ author: { ...state.author, avatar: "" } })}
+      />
+
       <FormRow>
         <FormField label={t("authorName")}>
           <Input
