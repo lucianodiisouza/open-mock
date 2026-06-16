@@ -17,6 +17,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical, Plus, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
   EMPTY_CHAT_MESSAGES,
   EMPTY_PARTICIPANTS,
@@ -27,6 +28,7 @@ import { FormField, FormSection, ItemCard } from "@/components/ui/form";
 import { Input, Select, Textarea } from "@/components/ui/input";
 
 export function MessageEditor() {
+  const t = useTranslations("generator.messages");
   const messages = useGeneratorStore((s) =>
     s.data?.category === "chat" || s.data?.category === "ai"
       ? s.data.state.messages
@@ -58,18 +60,18 @@ export function MessageEditor() {
 
   return (
     <FormSection
-      title="Messages"
-      description="Build the conversation. Drag to reorder."
+      title={t("title")}
+      description={t("description")}
       action={
         <Button variant="ghost" size="sm" onClick={addMessage}>
           <Plus size={14} />
-          Add message
+          {t("addMessage")}
         </Button>
       }
     >
       {messages.length === 0 ? (
         <p className="rounded-lg border border-dashed border-zinc-200 px-4 py-8 text-center text-sm text-zinc-500 dark:border-zinc-700">
-          No messages yet. Add one to get started.
+          {t("empty")}
         </p>
       ) : (
         <DndContext
@@ -116,6 +118,7 @@ function SortableMessage({
   onUpdate: (updates: Record<string, unknown>) => void;
   onRemove: () => void;
 }) {
+  const t = useTranslations("generator.messages");
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: msg.id,
   });
@@ -133,13 +136,13 @@ function SortableMessage({
           {...attributes}
           {...listeners}
           className="cursor-grab rounded-md p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 active:cursor-grabbing dark:hover:bg-zinc-800"
-          aria-label="Drag to reorder"
+          aria-label={t("dragToReorder")}
         >
           <GripVertical size={16} />
         </button>
 
         <div className="flex-1">
-          <FormField label="Sender">
+          <FormField label={t("sender")}>
             <Select
               value={msg.senderId}
               onChange={(e) => onUpdate({ senderId: e.target.value })}
@@ -157,23 +160,23 @@ function SortableMessage({
           variant="danger"
           size="icon"
           onClick={onRemove}
-          aria-label="Remove message"
+          aria-label={t("removeMessage")}
         >
           <Trash2 size={14} />
         </Button>
       </div>
 
-      <FormField label="Message">
+      <FormField label={t("message")}>
         <Textarea
           value={msg.text ?? ""}
           onChange={(e) => onUpdate({ text: e.target.value })}
           rows={2}
-          placeholder="Type a message..."
+          placeholder={t("messagePlaceholder")}
         />
       </FormField>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <FormField label="Timestamp">
+        <FormField label={t("timestamp")}>
           <Input
             type="text"
             value={msg.timestamp}
@@ -181,14 +184,14 @@ function SortableMessage({
             placeholder="9:41 AM"
           />
         </FormField>
-        <FormField label="Status">
+        <FormField label={t("status")}>
           <Select
             value={msg.status ?? "sent"}
             onChange={(e) => onUpdate({ status: e.target.value })}
           >
-            <option value="sent">Sent</option>
-            <option value="delivered">Delivered</option>
-            <option value="read">Read</option>
+            <option value="sent">{t("statusSent")}</option>
+            <option value="delivered">{t("statusDelivered")}</option>
+            <option value="read">{t("statusRead")}</option>
           </Select>
         </FormField>
       </div>
