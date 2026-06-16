@@ -40,7 +40,7 @@ export function createDefaultChatState(overrides?: Partial<ChatState>): ChatStat
   };
 }
 
-export function createDefaultAIChatState(): ChatState {
+export function createDefaultAIChatState(overrides?: Partial<ChatState>): ChatState {
   return createDefaultChatState({
     participants: [
       { id: "user", name: "You", avatar: "", online: true },
@@ -63,5 +63,6 @@ export function createDefaultAIChatState(): ChatState {
       },
     ],
     settings: { ...defaultSettings, showTicks: false },
+    ...overrides,
   });
 }
