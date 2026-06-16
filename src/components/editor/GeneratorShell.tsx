@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import type { PlatformConfig } from "@/lib/platform-registry";
-import { CATEGORY_LABELS } from "@/lib/platform-registry";
 import { useGeneratorStore } from "@/stores/generator-store";
 import { DeviceFrame } from "@/components/chrome/DeviceFrame";
 import { PlatformPreview } from "@/components/platforms/PlatformPreview";
@@ -14,9 +14,12 @@ import { SettingsPanel } from "./SettingsPanel";
 
 interface GeneratorShellProps {
   platform: PlatformConfig;
+  seoDescription: string;
 }
 
-export function GeneratorShell({ platform }: GeneratorShellProps) {
+export function GeneratorShell({ platform, seoDescription }: GeneratorShellProps) {
+  const tCategories = useTranslations("categories");
+  const t = useTranslations("generator");
   const previewRef = useRef<HTMLDivElement>(null);
   const init = useGeneratorStore((s) => s.init);
   const data = useGeneratorStore((s) => s.data);
@@ -65,13 +68,13 @@ export function GeneratorShell({ platform }: GeneratorShellProps) {
       <div className="mb-8 flex flex-col gap-4 border-b border-zinc-200 pb-6 sm:flex-row sm:items-end sm:justify-between dark:border-zinc-800">
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-emerald-600">
-            {CATEGORY_LABELS[platform.category]}
+            {tCategories(platform.category)}
           </p>
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             {platform.name}
           </h1>
           <p className="mt-1 max-w-xl text-sm text-zinc-500 dark:text-zinc-400">
-            {platform.seo.description}
+            {seoDescription}
           </p>
         </div>
         <ExportButton
@@ -101,10 +104,10 @@ export function GeneratorShell({ platform }: GeneratorShellProps) {
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Live preview
+                  {t("livePreview")}
                 </h2>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Updates as you edit
+                  {t("updatesAsYouEdit")}
                 </p>
               </div>
             </div>
