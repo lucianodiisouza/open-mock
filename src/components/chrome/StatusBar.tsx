@@ -5,15 +5,23 @@ interface StatusBarProps {
   dark?: boolean;
 }
 
+/** iOS status bar safe-area height (notch / Dynamic Island clearance). */
+const STATUS_BAR_HEIGHT = 47;
+
 export function StatusBar({ time, battery, signal, dark = false }: StatusBarProps) {
   const textColor = dark ? "#ffffff" : "#000000";
 
   return (
     <div
-      className="flex items-end justify-between px-7 pb-1 pt-3 text-[13px] font-semibold tracking-tight"
-      style={{ color: textColor, background: "transparent" }}
+      className="flex shrink-0 items-end justify-between px-7 pb-1.5"
+      style={{
+        color: textColor,
+        background: "transparent",
+        height: STATUS_BAR_HEIGHT,
+        paddingTop: 14,
+      }}
     >
-      <span className="w-16">{time}</span>
+      <span className="w-16 text-[13px] font-semibold tracking-tight">{time}</span>
       <div className="flex items-center gap-[5px]">
         <SignalIcon signal={signal} color={textColor} />
         <WifiIcon color={textColor} />
