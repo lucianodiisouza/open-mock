@@ -10,6 +10,7 @@ import {
   FormSection,
 } from "@/components/ui/form";
 import { Input, Select, Textarea } from "@/components/ui/input";
+import { AvatarUploadField } from "@/components/ui/avatar-upload";
 import { ImageUploadField } from "@/components/ui/image-upload";
 
 export function SettingsPanel({ platform }: { platform: PlatformConfig }) {
@@ -84,6 +85,25 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
           placeholder={t("contactNamePlaceholder")}
         />
       </FormField>
+
+      <AvatarUploadField
+        label={t("contactAvatar")}
+        description={t("contactAvatarDescription")}
+        value={other?.avatar ?? ""}
+        fallbackInitial={other?.name ?? "?"}
+        onChange={(dataUrl) => {
+          const updated = participants.map((p) =>
+            p.id === other?.id ? { ...p, avatar: dataUrl } : p,
+          );
+          updateParticipants(updated);
+        }}
+        onClear={() => {
+          const updated = participants.map((p) =>
+            p.id === other?.id ? { ...p, avatar: "" } : p,
+          );
+          updateParticipants(updated);
+        }}
+      />
 
       <div className="space-y-1 rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-700 dark:bg-zinc-900">
         <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
