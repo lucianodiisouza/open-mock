@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { StorySlide } from "@/lib/types/story";
+import { createDefaultStorySlide, normalizeStorySlide } from "@/lib/utils/story-slide";
 import type { GeneratorState } from "@/lib/types";
 import type { ChatState } from "@/lib/types/chat";
 import type { PostState } from "@/lib/types/post";
@@ -235,7 +236,7 @@ export const useGeneratorStore = create<GeneratorStore>()(
               ...data.state,
               slides: [
                 ...data.state.slides,
-                { type: "text", content: "New slide", duration: 5 },
+                createDefaultStorySlide({ text: "New slide" }),
               ],
             },
           },
@@ -246,7 +247,7 @@ export const useGeneratorStore = create<GeneratorStore>()(
         const { data } = get();
         if (!data || data.category !== "story") return;
         const slides = [...data.state.slides];
-        slides[index] = { ...slides[index], ...updates };
+        slides[index] = { ...normalizeStorySlide(slides[index]), ...updates };
         set({
           data: { ...data, state: { ...data.state, slides } },
         });

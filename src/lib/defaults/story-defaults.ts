@@ -1,11 +1,18 @@
 import type { StoryState } from "@/lib/types/story";
+import { createDefaultStorySlide } from "@/lib/utils/story-slide";
 
 export function createDefaultStoryState(): StoryState {
   return {
     author: { name: "Jane", avatar: "" },
     slides: [
-      { type: "text", content: "Beautiful sunset today 🌅", duration: 5 },
-      { type: "text", content: "Swipe up for more!", duration: 5 },
+      createDefaultStorySlide({
+        text: "Beautiful sunset today 🌅",
+        fontSize: "large",
+      }),
+      createDefaultStorySlide({
+        text: "Swipe up for more!",
+        textPosition: "bottom",
+      }),
     ],
     progress: 0,
     darkMode: false,
