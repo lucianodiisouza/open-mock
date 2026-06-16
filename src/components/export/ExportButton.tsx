@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Download, Film, X } from "lucide-react";
 import { exportToPng } from "@/lib/export/png";
 import { exportToVideo } from "@/lib/export/video";
@@ -21,6 +22,8 @@ export function ExportButton({
   messageCount = 0,
   supportsVideo = false,
 }: ExportButtonProps) {
+  const t = useTranslations("generator.export");
+  const tCommon = useTranslations("common");
   const [exporting, setExporting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [scale, setScale] = useState(3);
@@ -58,7 +61,7 @@ export function ExportButton({
     <>
       <Button onClick={() => setShowModal(true)}>
         <Download size={16} />
-        Export
+        {t("button")}
       </Button>
 
       {showModal && (
@@ -75,40 +78,37 @@ export function ExportButton({
                   id="export-title"
                   className="text-lg font-semibold text-zinc-900 dark:text-zinc-100"
                 >
-                  Export mockup
+                  {t("title")}
                 </h3>
                 <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
-                  Choose format and quality settings.
+                  {t("description")}
                 </p>
               </div>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowModal(false)}
-                aria-label="Close"
+                aria-label={tCommon("close")}
               >
                 <X size={16} />
               </Button>
             </div>
 
             <div className="space-y-4 px-6 py-5">
-              <FormField
-                label="Resolution"
-                description="Higher values produce sharper images."
-              >
+              <FormField label={t("resolution")} description={t("resolutionDescription")}>
                 <Select
                   value={scale}
                   onChange={(e) => setScale(Number(e.target.value))}
                 >
-                  <option value={1}>1x — Standard</option>
-                  <option value={2}>2x — High</option>
-                  <option value={3}>3x — Ultra</option>
+                  <option value={1}>{t("resolution1x")}</option>
+                  <option value={2}>{t("resolution2x")}</option>
+                  <option value={3}>{t("resolution3x")}</option>
                 </Select>
               </FormField>
 
               <CheckboxField
-                label="Transparent background"
-                description="Remove the preview background from the export."
+                label={t("transparentBackground")}
+                description={t("transparentBackgroundDescription")}
                 checked={transparent}
                 onChange={(e) => setTransparent(e.target.checked)}
               />
@@ -121,7 +121,7 @@ export function ExportButton({
                 disabled={exporting}
               >
                 <Download size={16} />
-                {exporting ? "Exporting..." : "Export PNG"}
+                {exporting ? t("exporting") : t("exportPng")}
               </Button>
               {supportsVideo && (
                 <Button
@@ -131,7 +131,7 @@ export function ExportButton({
                   disabled={exporting}
                 >
                   <Film size={16} />
-                  Video
+                  {t("video")}
                 </Button>
               )}
             </div>
