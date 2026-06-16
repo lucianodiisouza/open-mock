@@ -9,12 +9,14 @@ export function readFileAsDataUrl(file: File): Promise<string> {
   });
 }
 
-export function validateImageFile(file: File): string | null {
+export type ImageValidationError = "notImage" | "tooLarge";
+
+export function validateImageFile(file: File): ImageValidationError | null {
   if (!file.type.startsWith("image/")) {
-    return "Please choose an image file.";
+    return "notImage";
   }
   if (file.size > MAX_IMAGE_SIZE_BYTES) {
-    return "Image must be 5 MB or smaller.";
+    return "tooLarge";
   }
   return null;
 }
