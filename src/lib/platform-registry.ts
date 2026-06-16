@@ -3,6 +3,7 @@ import type {
   PlatformCategory,
   TemplateType,
 } from "@/lib/types";
+import type { ChatState } from "@/lib/types/chat";
 import { createDefaultChatState, createDefaultAIChatState } from "@/lib/defaults/chat-defaults";
 import { createDefaultPostState } from "@/lib/defaults/post-defaults";
 import { createDefaultCommentState } from "@/lib/defaults/comment-defaults";
@@ -44,7 +45,7 @@ function chatPlatform(
   };
 }
 
-function aiPlatform(slug: string, name: string): PlatformConfig {
+function aiPlatform(slug: string, name: string, stateOverrides?: Partial<ChatState>): PlatformConfig {
   return {
     slug,
     name,
@@ -58,7 +59,7 @@ function aiPlatform(slug: string, name: string): PlatformConfig {
     },
     createDefaultState: () => ({
       category: "ai",
-      state: createDefaultAIChatState(),
+      state: createDefaultAIChatState(stateOverrides),
     }),
   };
 }
