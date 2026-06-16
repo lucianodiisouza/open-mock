@@ -50,9 +50,12 @@ export function GeminiLogo({ size = 24 }: LogoProps) {
 export function GrokLogo({ size = 24, color = "#ffffff" }: LogoProps & { color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" stroke={color} strokeWidth="2" fill="none" />
-      <path
-        d="M8 8l8 8M16 8l-8 8"
+      <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+      <line
+        x1="6.5"
+        y1="6.5"
+        x2="17.5"
+        y2="17.5"
         stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
