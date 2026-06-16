@@ -45,6 +45,7 @@ export function BubbleChatPreview({ state, theme, platformSlug }: BubbleChatPrev
         dark={dark}
         contactName={other?.name ?? "Contact"}
         contactInitial={other?.name?.[0] ?? "?"}
+        contactAvatar={other?.avatar}
         online={other?.online}
       />
 
