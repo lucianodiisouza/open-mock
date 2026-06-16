@@ -1,19 +1,40 @@
 import type { MetadataRoute } from "next";
 import { getAllSlugs } from "@/lib/platform-registry";
+import { routing } from "@/i18n/routing";
+
+function localePath(locale: string, path: string) {
+  if (locale === routing.defaultLocale) {
+    return path || "/";
+  }
+  return `/${locale}${path}`;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://open-mock.dev";
-  const generatorUrls = getAllSlugs().map((slug) => ({
-    url: `${base}/generators/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
+  const staticPaths = ["", "/docs", "/faq"];
+  const slugs = getAllSlugs();
 
-  return [
-    { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/docs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/faq`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    ...generatorUrls,
-  ];
+  const entries: MetadataRoute.Sitemap = [];
+
+  for (const locale of routing.locales) {
+    for (const path of staticPaths) {
+      entries.push({
+        url: `${base}${localePath(locale, path)}`,
+        lastModified: new Date(),
+        changeFrequency: path === "" ? "weekly" : "monthly",
+        priority: path === "" ? 1 : 0.6,
+      });
+    }
+
+    for (const slug of slugs) {
+      entries.push({
+        url: `${base}${localePath(locale, `/generators/${slug}`)}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      });
+    }
+  }
+
+  return entries;
 }
