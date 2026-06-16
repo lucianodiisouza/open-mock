@@ -201,6 +201,8 @@
       "groupChatDescription": "Show a group conversation header instead of a DM.",
       "contactName": "Contact name",
       "contactNamePlaceholder": "Contact or group name",
+      "contactAvatar": "Contact avatar",
+      "contactAvatarDescription": "Upload a profile photo for the contact shown in the chat header.",
       "displayOptions": "Display options",
       "darkMode": "Dark mode",
       "darkModeDescription": "Use the platform's dark theme in the preview.",

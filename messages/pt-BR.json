@@ -201,6 +201,8 @@
       "groupChatDescription": "Mostra o cabeçalho de conversa em grupo em vez de DM.",
       "contactName": "Nome do contato",
       "contactNamePlaceholder": "Nome do contato ou grupo",
+      "contactAvatar": "Avatar do contato",
+      "contactAvatarDescription": "Envie uma foto de perfil para o contato exibido no cabeçalho do chat.",
       "displayOptions": "Opções de exibição",
       "darkMode": "Modo escuro",
       "darkModeDescription": "Usa o tema escuro da plataforma na pré-visualização.",
