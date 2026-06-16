@@ -15,7 +15,7 @@ export function SlackPreview({ state, theme }: SlackPreviewProps) {
 
   return (
     <div
-      className="flex flex-col"
+      className="flex flex-col overflow-hidden"
       style={{
         width: 390,
         height: 700,
@@ -50,7 +50,7 @@ export function SlackPreview({ state, theme }: SlackPreviewProps) {
         </button>
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 overflow-hidden px-4 py-4">
+      <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 py-4">
         {messages.map((msg) => {
           const sender = participants.find((p) => p.id === msg.senderId);
           return (
@@ -78,7 +78,7 @@ export function SlackPreview({ state, theme }: SlackPreviewProps) {
       </div>
 
       <div
-        className="border-t p-3"
+        className="shrink-0 border-t p-3"
         style={{ borderColor: dark ? "#333" : "#e0e0e0", background: dark ? "#1a1d21" : "#fff" }}
       >
         <div

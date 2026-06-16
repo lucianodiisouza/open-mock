@@ -36,7 +36,7 @@ export function StoryPreview({ state, theme, platformSlug }: StoryPreviewProps) 
 
   return (
     <div
-      className="relative flex flex-col"
+      className="relative flex flex-col overflow-hidden"
       style={{
         width: 390,
         height: 700,
@@ -84,7 +84,7 @@ export function StoryPreview({ state, theme, platformSlug }: StoryPreviewProps) 
         </button>
       </div>
 
-      <div className="relative flex flex-1 overflow-hidden">
+      <div className="relative flex min-h-0 flex-1 overflow-hidden">
         {currentSlide.backgroundImage ? (
           <img
             src={currentSlide.backgroundImage}

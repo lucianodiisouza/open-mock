@@ -16,7 +16,7 @@ export function AIChatPreview({ state, theme, platformSlug }: AIChatPreviewProps
 
   return (
     <div
-      className="flex flex-col"
+      className="flex flex-col overflow-hidden"
       style={{
         width: 390,
         height: 700,
@@ -32,7 +32,7 @@ export function AIChatPreview({ state, theme, platformSlug }: AIChatPreviewProps
       />
 
       <div
-        className="flex items-center justify-between border-b px-3 py-2.5"
+        className="flex shrink-0 items-center justify-between border-b px-3 py-2.5"
         style={{
           borderColor: dark ? "#444" : "#e5e5e5",
           color: dark ? "#fff" : "#000",
@@ -55,7 +55,7 @@ export function AIChatPreview({ state, theme, platformSlug }: AIChatPreviewProps
         </button>
       </div>
 
-      <div className="flex flex-1 flex-col gap-5 overflow-hidden px-4 py-4">
+      <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-4 py-4">
         {messages.map((msg) => {
           const isUser = msg.senderId === "user";
           if (isUser) {
@@ -95,7 +95,7 @@ export function AIChatPreview({ state, theme, platformSlug }: AIChatPreviewProps
       </div>
 
       <div
-        className="border-t px-3 py-3"
+        className="shrink-0 border-t px-3 py-3"
         style={{ borderColor: dark ? "#444" : "#e5e5e5" }}
       >
         <div

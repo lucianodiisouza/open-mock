@@ -17,7 +17,7 @@ export function IMessagePreview({ state, theme, platformSlug }: IMessagePreviewP
 
   return (
     <div
-      className="flex flex-col"
+      className="flex flex-col overflow-hidden"
       style={{
         width: 390,
         height: 700,
@@ -33,7 +33,7 @@ export function IMessagePreview({ state, theme, platformSlug }: IMessagePreviewP
       />
 
       <div
-        className="flex items-center gap-1 border-b px-1 py-1.5"
+        className="flex shrink-0 items-center gap-1 border-b px-1 py-1.5"
         style={{
           borderColor: dark ? "#2c2c2e" : "#e5e5ea",
           color: dark ? "#fff" : "#000",
@@ -54,7 +54,7 @@ export function IMessagePreview({ state, theme, platformSlug }: IMessagePreviewP
         <div className="w-9" />
       </div>
 
-      <div className="flex flex-1 flex-col gap-1 overflow-hidden px-3 py-3">
+      <div className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-3">
         {messages.map((msg, i) => {
           const isSent = msg.senderId === "user";
           const isLast = i === messages.length - 1;

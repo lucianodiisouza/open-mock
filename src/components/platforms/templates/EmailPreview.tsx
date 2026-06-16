@@ -18,7 +18,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
   if (isGmail) {
     return (
       <div
-        className="flex flex-col"
+        className="flex flex-col overflow-hidden"
         style={{
           width: 390,
           height: 700,
@@ -59,7 +59,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
           <MoreVertical size={18} color={darkMode ? "#888" : "#5f6368"} />
         </div>
 
-        <div className="flex-1 overflow-auto px-4 py-4">
+        <div className="min-h-0 flex-1 overflow-auto px-4 py-4">
           <h1 className="text-xl font-normal leading-snug" style={{ color: darkMode ? "#fff" : "#202124" }}>
             {subject}
           </h1>
@@ -87,7 +87,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
   if (isOutlook) {
     return (
       <div
-        className="flex flex-col"
+        className="flex flex-col overflow-hidden"
         style={{
           width: 390,
           height: 700,
@@ -98,7 +98,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
         <div className="px-4 py-3 text-sm font-semibold text-white" style={{ background: "#0078d4" }}>
           {subject}
         </div>
-        <div className="flex-1 overflow-auto bg-white p-4" style={{ background: darkMode ? "#292929" : "#fff" }}>
+        <div className="min-h-0 flex-1 overflow-auto bg-white p-4" style={{ background: darkMode ? "#292929" : "#fff" }}>
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm font-semibold text-white">
               {from.name[0]}
@@ -125,7 +125,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
 
   return (
     <div
-      className="flex flex-col"
+      className="flex flex-col overflow-hidden"
       style={{
         width: 390,
         height: 700,
@@ -136,7 +136,7 @@ export function EmailPreview({ state, theme, platformSlug }: EmailPreviewProps) 
       <div className="px-4 py-3 text-sm font-semibold text-white" style={{ background: theme.headerBg }}>
         {theme.platformLabel}
       </div>
-      <div className="flex-1 overflow-auto p-4">
+      <div className="min-h-0 flex-1 overflow-auto p-4">
         <h1 className="text-xl font-normal" style={{ color: darkMode ? "#fff" : "#000" }}>
           {subject}
         </h1>
