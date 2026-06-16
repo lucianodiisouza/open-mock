@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { EMPTY_PARTICIPANTS, useGeneratorStore } from "@/stores/generator-store";
 import type { PlatformConfig } from "@/lib/platform-registry";
 import {
@@ -35,6 +36,7 @@ export function SettingsPanel({ platform }: { platform: PlatformConfig }) {
 }
 
 function ChatSettings({ platform }: { platform: PlatformConfig }) {
+  const t = useTranslations("generator.settings");
   const settings = useGeneratorStore((s) =>
     s.data?.category === "chat" || s.data?.category === "ai"
       ? s.data.state.settings
@@ -59,20 +61,17 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
   const other = participants.find((p) => p.id !== "user") ?? participants[1];
 
   return (
-    <FormSection
-      title="Appearance & settings"
-      description="Customize how the chat mockup looks."
-    >
+    <FormSection title={t("appearanceTitle")} description={t("appearanceDescription")}>
       {platform.features.includes("group") && (
         <CheckboxField
-          label="Group chat"
-          description="Show a group conversation header instead of a DM."
+          label={t("groupChat")}
+          description={t("groupChatDescription")}
           checked={mode === "group"}
           onChange={(e) => setChatMode(e.target.checked ? "group" : "dm")}
         />
       )}
 
-      <FormField label="Contact name">
+      <FormField label={t("contactName")}>
         <Input
           type="text"
           value={other?.name ?? ""}
@@ -82,30 +81,30 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
             );
             updateParticipants(updated);
           }}
-          placeholder="Contact or group name"
+          placeholder={t("contactNamePlaceholder")}
         />
       </FormField>
 
       <div className="space-y-1 rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-700 dark:bg-zinc-900">
         <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
-          Display options
+          {t("displayOptions")}
         </p>
         <CheckboxField
-          label="Dark mode"
-          description="Use the platform's dark theme in the preview."
+          label={t("darkMode")}
+          description={t("darkModeDescription")}
           checked={settings.darkMode}
           onChange={(e) => updateChatSettings({ darkMode: e.target.checked })}
         />
         <CheckboxField
-          label="3D view"
-          description="Tilt the device frame for a perspective effect."
+          label={t("view3d")}
+          description={t("view3dDescription")}
           checked={settings.view3d}
           onChange={(e) => updateChatSettings({ view3d: e.target.checked })}
         />
       </div>
 
       <FormRow>
-        <FormField label="Status bar time">
+        <FormField label={t("statusBarTime")}>
           <Input
             type="text"
             value={settings.statusBar.time}
@@ -117,7 +116,7 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
             placeholder="9:41"
           />
         </FormField>
-        <FormField label="Device frame">
+        <FormField label={t("deviceFrame")}>
           <Select
             value={settings.deviceFrame}
             onChange={(e) =>
@@ -126,17 +125,17 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
               })
             }
           >
-            <option value="none">None</option>
-            <option value="iphone">iPhone</option>
-            <option value="android">Android</option>
+            <option value="none">{t("deviceNone")}</option>
+            <option value="iphone">{t("deviceIphone")}</option>
+            <option value="android">{t("deviceAndroid")}</option>
           </Select>
         </FormField>
       </FormRow>
 
       {platform.features.includes("wallpaper") && (
         <ImageUploadField
-          label="Chat wallpaper"
-          description="Upload a custom background image for the chat screen."
+          label={t("chatWallpaper")}
+          description={t("chatWallpaperDescription")}
           value={settings.wallpaper}
           onChange={(dataUrl) => updateChatSettings({ wallpaper: dataUrl })}
           onClear={() => updateChatSettings({ wallpaper: "" })}
@@ -147,6 +146,7 @@ function ChatSettings({ platform }: { platform: PlatformConfig }) {
 }
 
 function PostSettings({ platform }: { platform: PlatformConfig }) {
+  const t = useTranslations("generator.settings");
   const state = useGeneratorStore((s) =>
     s.data?.category === "post" ? s.data.state : null,
   );
@@ -154,46 +154,43 @@ function PostSettings({ platform }: { platform: PlatformConfig }) {
   if (!state) return null;
 
   return (
-    <FormSection
-      title="Post content"
-      description="Edit the author and body of your social post."
-    >
+    <FormSection title={t("postTitle")} description={t("postDescription")}>
       <FormRow>
-        <FormField label="Author name">
+        <FormField label={t("authorName")}>
           <Input
             type="text"
             value={state.author.name}
             onChange={(e) =>
               updatePost({ author: { ...state.author, name: e.target.value } })
             }
-            placeholder="Jane Doe"
+            placeholder={t("authorNamePlaceholder")}
           />
         </FormField>
-        <FormField label="Handle">
+        <FormField label={t("handle")}>
           <Input
             type="text"
             value={state.author.handle}
             onChange={(e) =>
               updatePost({ author: { ...state.author, handle: e.target.value } })
             }
-            placeholder="@janedoe"
+            placeholder={t("handlePlaceholder")}
           />
         </FormField>
       </FormRow>
 
-      <FormField label="Content">
+      <FormField label={t("content")}>
         <Textarea
           value={state.content}
           onChange={(e) => updatePost({ content: e.target.value })}
           rows={5}
-          placeholder="What's on your mind?"
+          placeholder={t("contentPlaceholder")}
         />
       </FormField>
 
       {platform.features.includes("media") && (
         <ImageUploadField
-          label="Post image"
-          description="Attach an image to your social post."
+          label={t("postImage")}
+          description={t("postImageDescription")}
           value={state.media?.[0]?.url ?? ""}
           onChange={(dataUrl) =>
             updatePost({ media: [{ type: "image", url: dataUrl }] })
@@ -204,15 +201,15 @@ function PostSettings({ platform }: { platform: PlatformConfig }) {
 
       <div className="space-y-1 rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-700 dark:bg-zinc-900">
         <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
-          Display options
+          {t("displayOptions")}
         </p>
         <CheckboxField
-          label="Dark mode"
+          label={t("darkMode")}
           checked={state.darkMode}
           onChange={(e) => updatePost({ darkMode: e.target.checked })}
         />
         <CheckboxField
-          label="3D view"
+          label={t("view3d")}
           checked={state.view3d}
           onChange={(e) => updatePost({ view3d: e.target.checked })}
         />
@@ -222,6 +219,7 @@ function PostSettings({ platform }: { platform: PlatformConfig }) {
 }
 
 function CommentSettings() {
+  const t = useTranslations("generator.settings");
   const state = useGeneratorStore((s) =>
     s.data?.category === "comment" ? s.data.state : null,
   );
@@ -229,25 +227,19 @@ function CommentSettings() {
   if (!state) return null;
 
   return (
-    <FormSection
-      title="Post context"
-      description="Set the original post shown above the comments."
-    >
-      <FormField
-        label="Post preview"
-        description="Short text shown as the post being commented on."
-      >
+    <FormSection title={t("postContextTitle")} description={t("postContextDescription")}>
+      <FormField label={t("postPreview")} description={t("postPreviewDescription")}>
         <Input
           type="text"
           value={state.postPreview ?? ""}
           onChange={(e) => updateCommentState({ postPreview: e.target.value })}
-          placeholder="Original post text..."
+          placeholder={t("postPreviewPlaceholder")}
         />
       </FormField>
 
       <CheckboxField
-        label="Dark mode"
-        description="Use the platform's dark theme in the preview."
+        label={t("darkMode")}
+        description={t("darkModeDescription")}
         checked={state.darkMode}
         onChange={(e) => updateCommentState({ darkMode: e.target.checked })}
       />
@@ -256,6 +248,7 @@ function CommentSettings() {
 }
 
 function StorySettings() {
+  const t = useTranslations("generator.settings");
   const state = useGeneratorStore((s) =>
     s.data?.category === "story" ? s.data.state : null,
   );
@@ -263,18 +256,15 @@ function StorySettings() {
   if (!state) return null;
 
   return (
-    <FormSection
-      title="Story details"
-      description="Set the author shown on your story frames."
-    >
-      <FormField label="Author">
+    <FormSection title={t("storyDetailsTitle")} description={t("storyDetailsDescription")}>
+      <FormField label={t("storyAuthor")}>
         <Input
           type="text"
           value={state.author.name}
           onChange={(e) =>
             updateStory({ author: { ...state.author, name: e.target.value } })
           }
-          placeholder="Your name"
+          placeholder={t("storyAuthorPlaceholder")}
         />
       </FormField>
     </FormSection>
@@ -282,6 +272,7 @@ function StorySettings() {
 }
 
 function EmailSettings() {
+  const t = useTranslations("generator.settings");
   const state = useGeneratorStore((s) =>
     s.data?.category === "email" ? s.data.state : null,
   );
@@ -289,36 +280,33 @@ function EmailSettings() {
   if (!state) return null;
 
   return (
-    <FormSection
-      title="Email content"
-      description="Compose the email shown in the preview."
-    >
-      <FormField label="From name">
+    <FormSection title={t("emailTitle")} description={t("emailDescription")}>
+      <FormField label={t("fromName")}>
         <Input
           type="text"
           value={state.from.name}
           onChange={(e) =>
             updateEmail({ from: { ...state.from, name: e.target.value } })
           }
-          placeholder="Sender name"
+          placeholder={t("fromNamePlaceholder")}
         />
       </FormField>
 
-      <FormField label="Subject">
+      <FormField label={t("subject")}>
         <Input
           type="text"
           value={state.subject}
           onChange={(e) => updateEmail({ subject: e.target.value })}
-          placeholder="Email subject line"
+          placeholder={t("subjectPlaceholder")}
         />
       </FormField>
 
-      <FormField label="Body">
+      <FormField label={t("body")}>
         <Textarea
           value={state.body}
           onChange={(e) => updateEmail({ body: e.target.value })}
           rows={8}
-          placeholder="Write your email body..."
+          placeholder={t("bodyPlaceholder")}
         />
       </FormField>
     </FormSection>
