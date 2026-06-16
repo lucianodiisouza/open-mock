@@ -3,14 +3,16 @@
 import { Plus, Trash2 } from "lucide-react";
 import { EMPTY_STORY_SLIDES, useGeneratorStore } from "@/stores/generator-store";
 import { Button } from "@/components/ui/button";
-import { FormField, FormSection, ItemCard } from "@/components/ui/form";
+import { FormField, FormRow, FormSection, ItemCard } from "@/components/ui/form";
 import { Select, Textarea } from "@/components/ui/input";
 import { ImageUploadField } from "@/components/ui/image-upload";
+import type { StoryFontSize, StoryTextAlign, StoryTextPosition } from "@/lib/types/story";
+import { normalizeStorySlide } from "@/lib/utils/story-slide";
 
 export function StoryEditor() {
   const slides = useGeneratorStore((s) =>
     s.data?.category === "story" ? s.data.state.slides : EMPTY_STORY_SLIDES,
-  );
+  ).map(normalizeStorySlide);
   const addSlide = useGeneratorStore((s) => s.addSlide);
   const updateSlide = useGeneratorStore((s) => s.updateSlide);
   const removeSlide = useGeneratorStore((s) => s.removeSlide);
@@ -48,39 +50,69 @@ export function StoryEditor() {
                 </Button>
               </div>
 
-              <FormField label="Slide type">
+              <ImageUploadField
+                label="Background image"
+                description="Optional image behind the slide text."
+                value={slide.backgroundImage}
+                onChange={(dataUrl) => updateSlide(i, { backgroundImage: dataUrl })}
+                onClear={() => updateSlide(i, { backgroundImage: "" })}
+              />
+
+              <FormField label="Text">
+                <Textarea
+                  value={slide.text}
+                  onChange={(e) => updateSlide(i, { text: e.target.value })}
+                  rows={2}
+                  placeholder="Slide text or caption..."
+                />
+              </FormField>
+
+              <FormRow>
+                <FormField label="Text position">
+                  <Select
+                    value={slide.textPosition}
+                    onChange={(e) =>
+                      updateSlide(i, {
+                        textPosition: e.target.value as StoryTextPosition,
+                      })
+                    }
+                  >
+                    <option value="top">Top</option>
+                    <option value="center">Center</option>
+                    <option value="bottom">Bottom</option>
+                  </Select>
+                </FormField>
+
+                <FormField label="Text alignment">
+                  <Select
+                    value={slide.textAlign}
+                    onChange={(e) =>
+                      updateSlide(i, {
+                        textAlign: e.target.value as StoryTextAlign,
+                      })
+                    }
+                  >
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                  </Select>
+                </FormField>
+              </FormRow>
+
+              <FormField label="Text size">
                 <Select
-                  value={slide.type}
+                  value={slide.fontSize}
                   onChange={(e) =>
                     updateSlide(i, {
-                      type: e.target.value as "text" | "image",
-                      content: "",
+                      fontSize: e.target.value as StoryFontSize,
                     })
                   }
                 >
-                  <option value="text">Text</option>
-                  <option value="image">Image</option>
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
                 </Select>
               </FormField>
-
-              {slide.type === "image" ? (
-                <ImageUploadField
-                  label="Story image"
-                  description="Upload the image shown on this story frame."
-                  value={slide.content}
-                  onChange={(dataUrl) => updateSlide(i, { content: dataUrl })}
-                  onClear={() => updateSlide(i, { content: "" })}
-                />
-              ) : (
-                <FormField label="Content">
-                  <Textarea
-                    value={slide.content}
-                    onChange={(e) => updateSlide(i, { content: e.target.value })}
-                    rows={2}
-                    placeholder="Slide text or caption..."
-                  />
-                </FormField>
-              )}
             </ItemCard>
           ))}
         </div>

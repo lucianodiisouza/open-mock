@@ -2,6 +2,8 @@ import type { StoryState } from "@/lib/types/story";
 import type { PlatformTheme } from "@/lib/types";
 import { StatusBar } from "@/components/chrome/StatusBar";
 import { MoreVertical, Send } from "@/components/chrome/icons";
+import { cn } from "@/lib/cn";
+import { normalizeStorySlide } from "@/lib/utils/story-slide";
 
 interface StoryPreviewProps {
   state: StoryState;
@@ -9,9 +11,27 @@ interface StoryPreviewProps {
   platformSlug: string;
 }
 
+const FONT_SIZE_CLASS = {
+  small: "text-lg",
+  medium: "text-2xl",
+  large: "text-4xl",
+} as const;
+
+const TEXT_POSITION_CLASS = {
+  top: "items-start pt-24",
+  center: "items-center",
+  bottom: "items-end pb-28",
+} as const;
+
+const TEXT_ALIGN_CLASS = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+} as const;
+
 export function StoryPreview({ state, theme, platformSlug }: StoryPreviewProps) {
   const { author, slides, progress } = state;
-  const currentSlide = slides[progress] ?? slides[0];
+  const currentSlide = normalizeStorySlide(slides[progress] ?? slides[0]);
   const isInstagram = platformSlug === "instagram";
 
   return (
@@ -64,13 +84,34 @@ export function StoryPreview({ state, theme, platformSlug }: StoryPreviewProps) 
         </button>
       </div>
 
-      <div className="flex flex-1 items-center justify-center">
-        {currentSlide?.type === "image" ? (
-          <img src={currentSlide.content} alt="" className="h-full w-full object-cover" />
+      <div className="relative flex flex-1 overflow-hidden">
+        {currentSlide.backgroundImage ? (
+          <img
+            src={currentSlide.backgroundImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         ) : (
-          <p className="px-8 text-center text-2xl font-bold text-white drop-shadow-lg">
-            {currentSlide?.content}
-          </p>
+          <div className="absolute inset-0 bg-gradient-to-b from-zinc-800 to-black" />
+        )}
+
+        {currentSlide.text && (
+          <div
+            className={cn(
+              "relative z-[1] flex w-full px-8",
+              TEXT_POSITION_CLASS[currentSlide.textPosition],
+            )}
+          >
+            <p
+              className={cn(
+                "w-full font-bold text-white drop-shadow-lg",
+                FONT_SIZE_CLASS[currentSlide.fontSize],
+                TEXT_ALIGN_CLASS[currentSlide.textAlign],
+              )}
+            >
+              {currentSlide.text}
+            </p>
+          </div>
         )}
       </div>
 
