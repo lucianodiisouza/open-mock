@@ -288,6 +288,17 @@ function StorySettings() {
 
   return (
     <FormSection title={t("storyDetailsTitle")} description={t("storyDetailsDescription")}>
+      <AvatarUploadField
+        label={t("storyAuthorAvatar")}
+        description={t("storyAuthorAvatarDescription")}
+        value={state.author.avatar}
+        fallbackInitial={state.author.name}
+        onChange={(dataUrl) =>
+          updateStory({ author: { ...state.author, avatar: dataUrl } })
+        }
+        onClear={() => updateStory({ author: { ...state.author, avatar: "" } })}
+      />
+
       <FormField label={t("storyAuthor")}>
         <Input
           type="text"
