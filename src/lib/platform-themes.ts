@@ -216,13 +216,13 @@ export const PLATFORM_THEMES: Record<string, PlatformTheme> = {
   }),
   gemini: base("Gemini", {
     primary: "#4285f4",
-    bubbleSent: "#f0f4f9",
+    bubbleSent: "#dde3ea",
     bubbleReceived: "#f0f4f9",
-    headerBg: "#ffffff",
-    headerText: "#000000",
-    background: "#ffffff",
+    headerBg: "#f0f4f9",
+    headerText: "#444746",
+    background: "#f0f4f9",
     accent: "#4285f4",
-    borderRadius: "12px",
+    borderRadius: "20px",
   }),
   grok: base("Grok", {
     primary: "#000000",
