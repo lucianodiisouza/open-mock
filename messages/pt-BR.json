@@ -248,6 +248,12 @@
       "removeImage": "Remover imagem",
       "notImage": "Escolha um arquivo de imagem.",
       "tooLarge": "A imagem deve ter 5 MB ou menos."
+    },
+    "crop": {
+      "title": "Recortar imagem",
+      "zoom": "Zoom",
+      "cancel": "Cancelar",
+      "apply": "Aplicar"
     }
   }
 }
