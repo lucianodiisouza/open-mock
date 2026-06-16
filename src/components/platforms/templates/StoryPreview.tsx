@@ -72,8 +72,12 @@ export function StoryPreview({ state, theme, platformSlug }: StoryPreviewProps) 
                 : theme.accent,
             }}
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-bold text-white">
-              {author.name[0]}
+            <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-black text-xs font-bold text-white">
+              {author.avatar ? (
+                <img src={author.avatar} alt="" className="h-full w-full object-cover" />
+              ) : (
+                author.name[0]
+              )}
             </div>
           </div>
           <span className="text-sm font-semibold text-white drop-shadow">{author.name}</span>
