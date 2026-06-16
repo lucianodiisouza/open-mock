@@ -219,6 +219,8 @@
       "postDescription": "Edite o autor e o corpo do seu post social.",
       "authorName": "Nome do autor",
       "authorNamePlaceholder": "Jane Doe",
+      "authorAvatar": "Avatar do autor",
+      "authorAvatarDescription": "Envie uma foto de perfil para o autor do post.",
       "handle": "Handle",
       "handlePlaceholder": "@janedoe",
       "content": "Conteúdo",
