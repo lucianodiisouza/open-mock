@@ -8,6 +8,7 @@ interface ChatHeaderProps {
   dark: boolean;
   contactName: string;
   contactInitial: string;
+  contactAvatar?: string;
   online?: boolean;
 }
 
@@ -17,6 +18,7 @@ export function ChatHeader({
   dark,
   contactName,
   contactInitial,
+  contactAvatar,
   online,
 }: ChatHeaderProps) {
   const header = getHeaderStyle(platformSlug, theme, dark);
@@ -46,12 +48,16 @@ export function ChatHeader({
           }}
         >
           <div
-            className="flex h-[34px] w-[34px] items-center justify-center rounded-full"
+            className="flex h-[34px] w-[34px] items-center justify-center overflow-hidden rounded-full"
             style={{
               background: isInstagram ? theme.accent : "transparent",
             }}
           >
-            {contactInitial}
+            {contactAvatar ? (
+              <img src={contactAvatar} alt="" className="h-full w-full object-cover" />
+            ) : (
+              contactInitial
+            )}
           </div>
         </div>
 
