@@ -56,10 +56,14 @@ export function SlackPreview({ state, theme }: SlackPreviewProps) {
           return (
             <div key={msg.id} className="flex gap-2.5">
               <div
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded text-sm font-bold text-white"
+                className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded text-sm font-bold text-white"
                 style={{ background: theme.accent }}
               >
-                {sender?.name?.[0] ?? "?"}
+                {sender?.avatar ? (
+                  <img src={sender.avatar} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  sender?.name?.[0] ?? "?"
+                )}
               </div>
               <div>
                 <div className="flex items-baseline gap-2">
