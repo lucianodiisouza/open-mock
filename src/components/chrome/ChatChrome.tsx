@@ -28,7 +28,7 @@ export function ChatHeader({
 
   return (
     <div
-      className="flex items-center gap-2 px-2 py-2"
+      className="flex shrink-0 items-center gap-2 px-2 py-2"
       style={{ background: header.background, color: header.color }}
     >
       <button type="button" className="flex h-9 w-9 items-center justify-center opacity-90">
@@ -112,7 +112,7 @@ export function ChatInputBar({ platformSlug, dark, placeholder = "Message" }: Ch
   if (isIMessage) {
     return (
       <div
-        className="flex items-end gap-2 border-t px-3 py-2"
+        className="flex shrink-0 items-end gap-2 border-t px-3 py-2"
         style={{ borderColor: dark ? "#333" : "#e5e5e5", background: dark ? "#000" : "#fff" }}
       >
         <button type="button" className="pb-2 opacity-70">
@@ -133,7 +133,7 @@ export function ChatInputBar({ platformSlug, dark, placeholder = "Message" }: Ch
   }
 
   return (
-    <div className="flex items-center gap-2 px-2 py-2" style={{ background: barBg }}>
+    <div className="flex shrink-0 items-center gap-2 px-2 py-2" style={{ background: barBg }}>
       {!isMessenger && (
         <button type="button" className="flex h-9 w-9 items-center justify-center">
           <Plus size={22} color={iconColor} />
