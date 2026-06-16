@@ -171,7 +171,16 @@ export const PLATFORMS: PlatformConfig[] = [
   aiPlatform("chatgpt", "ChatGPT"),
   aiPlatform("claude", "Claude"),
   aiPlatform("gemini", "Gemini"),
-  aiPlatform("grok", "Grok"),
+  aiPlatform("grok", "Grok", {
+    settings: {
+      darkMode: true,
+      wallpaper: "",
+      statusBar: { time: "09:41", battery: 100, signal: 4 },
+      deviceFrame: "iphone",
+      view3d: false,
+      showTicks: false,
+    },
+  }),
   aiPlatform("perplexity", "Perplexity"),
 
   // Posts (8)
